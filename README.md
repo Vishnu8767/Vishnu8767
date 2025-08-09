@@ -3,6 +3,8 @@
 🎓 **Computer Science Student** at Amity University Bengaluru 
 
 ---
+🔗 **Portfolio (live)**: https://vishnu8767.github.io/vishnu8767/
+--------
 
 ## 🚀 Featured Projects
 - [PROJECT_TEAM_04](https://github.com/Vishnu8767/PROJECT_TEAM_04)  

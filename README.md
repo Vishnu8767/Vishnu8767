@@ -1,11 +1,7 @@
 # 👋 Hi, I'm Boddu Vishnu Vardhan Reddy
 
-🎓 **Computer Science Student** at Amity University Bengaluru  
-💻 Passionate about **coding, problem-solving, and building projects**  
+🎓 **Computer Science Student** at Amity University Bengaluru 
 
----
-## 🌐 Portfolio Website
-🔗 [View my portfolio here](https://vishnu8767.github.io)
 ---
 
 ## 🚀 Featured Projects
@@ -15,12 +11,7 @@
 - [MINI_CHATBOT](https://github.com/Vishnu8767/MINI_CHATBOT)  
 - [Palindrome-Checker](https://github.com/Vishnu8767/Palindrome-Checker)  
 - [ERROR_PAGE-404](https://github.com/Vishnu8767/ERROR_PAGE-404)  
-- ...and more on my [GitHub Repositories](https://github.com/Vishnu8767?tab=repositories)  
-
----
-
-## 🌐 Portfolio Website
-🔗 [View my portfolio here](https://vishnu8767.github.io)
+- ...and more on my [GitHub Repositories](https://github.com/Vishnu8767?tab=repositories) 
 
 ---
 

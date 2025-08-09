@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boddu Vishnu Vardhan Reddy - Developer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #e4e4e7;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Animated Background Elements */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 20%;
+            left: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .bg-animation::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 60%;
+            right: 15%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 80px 0 60px;
+            position: relative;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #a855f7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 60px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+            animation: pulse 2s infinite;
+            border: 3px solid white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-avatar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            border-radius: 50%;
+        }
+
+        .letter-v {
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            font-family: 'Arial Black', Arial, sans-serif;
+            letter-spacing: -2px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #3b82f6, #a855f7, #06b6d4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            margin-bottom: 30px;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+
+        .tech-badge {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            color: #60a5fa;
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 0;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(59, 130, 246, 0.3);
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #a855f7);
+            border-radius: 2px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(71, 85, 105, 0.3);
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .project-card.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            transition: left 0.5s ease;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-icon {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #3b82f6, #a855f7);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+        }
+
+        .project-link {
+            color: #60a5fa;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #93c5fd;
+        }
+
+        .project-description {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        .project-stats {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .project-stat {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .project-tag {
+            background: rgba(168, 85, 247, 0.1);
+            color: #c4b5fd;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        /* Statistics */
+        .stats-section {
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 60px 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(71, 85, 105, 0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #3b82f6, #a855f7);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: #94a3b8;
+            font-size: 1rem;
+            margin-top: 8px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #64748b;
+            border-top: 1px solid rgba(71, 85, 105, 0.3);
+        }
+
+        /* Error Message */
+        .error-message {
+            text-align: center;
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 40px 0;
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="profile-avatar">
+                <div class="letter-v">V</div>
+            </div>
+            <h1>👋 Boddu Vishnu Vardhan Reddy</h1>
+            <p class="subtitle">Computer Science Student at Amity University Bengaluru</p>
+            <div class="tech-stack">
+                <span class="tech-badge">HTML5</span>
+                <span class="tech-badge">CSS3</span>
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">Node.js</span>
+            </div>
+        </header>
+
+        <!-- Statistics Section -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" id="total-repos">-</div>
+                    <div class="stat-label">Total Repositories</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="total-languages">-</div>
+                    <div class="stat-label">Languages Used</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="total-stars">-</div>
+                    <div class="stat-label">Total Stars</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section">
+            <h2 class="section-title">📂 My Repositories</h2>
+            
+            <!-- Loading State -->
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+            </div>
+
+            <!-- Error State -->
+            <div id="error" class="error-message" style="display: none;">
+                <h3>⚠️ Unable to load repositories</h3>
+                <p>Please check your internet connection or try again later.</p>
+            </div>
+
+            <!-- Projects Grid -->
+            <div id="projects-grid" class="projects-grid" style="display: none;">
+                <!-- Projects will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>📌 <em>All repositories are automatically fetched from GitHub</em></p>
+            <p style="margin-top: 10px;">Built with 💙 by Boddu Vishnu Vardhan Reddy</p>
+        </footer>
+    </div>
+
+    <script>
+        const GITHUB_USERNAME = 'Vishnu8767';
+        const GITHUB_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`;
+        
+        // Fallback data in case API fails
+        const FALLBACK_REPOS = [
+            {
+                name: 'PROJECT_TEAM_04',
+                html_url: 'https://github.com/Vishnu8767/PROJECT_TEAM_04',
+                description: 'Collaborative team project',
+                language: 'JavaScript',
+                stargazers_count: 0,
+                forks_count: 0,
+                watchers_count: 0,
+                updated_at: '2024-01-15T10:30:00Z',
+                created_at: '2024-01-10T08:00:00Z',
+                fork: false,
+                size: 1500
+            },
+            {
+                name: 'summer_4Aug',
+                html_url: 'https://github.com/Vishnu8767/summer_4Aug',
+                description: 'Summer project development',
+                language: 'Python',
+                stargazers_count: 1,
+                forks_count: 0,
+                watchers_count: 1,
+                updated_at: '2024-08-04T12:00:00Z',
+                created_at: '2024-08-01T09:00:00Z',
+                fork: false,
+                size: 1200
+            },
+            {
+                name: 'summer_4Aug--DHRUV',
+                html_url: 'https://github.com/Vishnu8767/summer_4Aug--DHRUV',
+                description: 'Summer project collaboration with Dhruv',
+                language: 'Python',
+                stargazers_count: 0,
+                forks_count: 1,
+                watchers_count: 0,
+                updated_at: '2024-08-04T14:20:00Z',
+                created_at: '2024-08-02T10:15:00Z',
+                fork: false,
+                size: 1100
+            },
+            {
+                name: 'VOTING-SYSTEM',
+                html_url: 'https://github.com/Vishnu8767/VOTING-SYSTEM',
+                description: 'Digital voting system implementation',
+                language: 'Python',
+                stargazers_count: 2,
+                forks_count: 1,
+                watchers_count: 1,
+                updated_at: '2024-01-12T14:20:00Z',
+                created_at: '2024-01-05T09:15:00Z',
+                fork: false,
+                size: 2300
+            },
+            {
+                name: 'NEW-YOURNAME-SIRI',
+                html_url: 'https://github.com/Vishnu8767/NEW-YOURNAME-SIRI',
+                description: 'AI voice assistant project',
+                language: 'Python',
+                stargazers_count: 3,
+                forks_count: 0,
+                watchers_count: 2,
+                updated_at: '2024-01-18T16:45:00Z',
+                created_at: '2024-01-08T11:30:00Z',
+                fork: false,
+                size: 1800
+            },
+            {
+                name: 'CHECK_YOUR_BATTERY_PERCENTAGE',
+                html_url: 'https://github.com/Vishnu8767/CHECK_YOUR_BATTERY_PERCENTAGE',
+                description: 'Tool to check system battery percentage',
+                language: 'Python',
+                stargazers_count: 1,
+                forks_count: 0,
+                watchers_count: 1,
+                updated_at: '2024-01-16T11:10:00Z',
+                created_at: '2024-01-09T08:30:00Z',
+                fork: false,
+                size: 600
+            },
+            {
+                name: 'Wi-Fi-signal-strength-tester',
+                html_url: 'https://github.com/Vishnu8767/Wi-Fi-signal-strength-tester',
+                description: 'Tool to test Wi-Fi signal strength',
+                language: 'Python',
+                stargazers_count: 1,
+                forks_count: 1,
+                watchers_count: 1,
+                updated_at: '2024-01-14T15:30:00Z',
+                created_at: '2024-01-06T14:20:00Z',
+                fork: false,
+                size: 1200
+            },
+            {
+                name: 'Fibonacci-Series',
+                html_url: 'https://github.com/Vishnu8767/Fibonacci-Series',
+                description: 'Mathematical Fibonacci sequence implementation',
+                language: 'Python',
+                stargazers_count: 0,
+                forks_count: 0,
+                watchers_count: 0,
+                updated_at: '2024-01-11T13:45:00Z',
+                created_at: '2024-01-04T15:20:00Z',
+                fork: false,
+                size: 400
+            },
+            {
+                name: 'fruit_shop_SIRI',
+                html_url: 'https://github.com/Vishnu8767/fruit_shop_SIRI',
+                description: 'Voice-controlled fruit shop management',
+                language: 'Python',
+                stargazers_count: 2,
+                forks_count: 0,
+                watchers_count: 1,
+                updated_at: '2024-01-17T10:15:00Z',
+                created_at: '2024-01-08T12:00:00Z',
+                fork: false,
+                size: 1500
+            },
+            {
+                name: 'calculator',
+                html_url: 'https://github.com/Vishnu8767/calculator',
+                description: 'Simple calculator application',
+                language: 'JavaScript',
+                stargazers_count: 1,
+                forks_count: 0,
+                watchers_count: 1,
+                updated_at: '2024-01-10T09:20:00Z',
+                created_at: '2024-01-03T13:45:00Z',
+                fork: false,
+                size: 800
+            },
+            {
+                name: 'calculator-niharika',
+                html_url: 'https://github.com/Vishnu8767/calculator-niharika',
+                description: 'Calculator project - Niharika version',
+                language: 'JavaScript',
+                stargazers_count: 0,
+                forks_count: 1,
+                watchers_count: 0,
+                updated_at: '2024-01-12T16:30:00Z',
+                created_at: '2024-01-05T11:15:00Z',
+                fork: false,
+                size: 750
+            },
+            {
+                name: 'Palindrome-Checker',
+                html_url: 'https://github.com/Vishnu8767/Palindrome-Checker',
+                description: 'Tool to check if text is a palindrome',
+                language: 'Python',
+                stargazers_count: 1,
+                forks_count: 0,
+                watchers_count: 1,
+                updated_at: '2024-01-13T14:45:00Z',
+                created_at: '2024-01-06T10:30:00Z',
+                fork: false,
+                size: 500
+            },
+            {
+                name: 'Simple-Interactive-ChatBot-Program',
+                html_url: 'https://github.com/Vishnu8767/Simple-Interactive-ChatBot-Program',
+                description: 'Interactive chatbot with natural language processing',
+                language: 'Python',
+                stargazers_count: 3,
+                forks_count: 1,
+                watchers_count: 2,
+                updated_at: '2024-01-19T15:20:00Z',
+                created_at: '2024-01-10T09:45:00Z',
+                fork: false,
+                size: 2100
+            },
+            {
+                name: 'ANSWER_KEY_CALCULATION',
+                html_url: 'https://github.com/Vishnu8767/ANSWER_KEY_CALCULATION',
+                description: 'Automated answer key calculation system',
+                language: 'Python',
+                stargazers_count: 1,
+                forks_count: 0,
+                watchers_count: 1,
+                updated_at: '2024-01-15T12:10:00Z',
+                created_at: '2024-01-07T14:30:00Z',
+                fork: false,
+                size: 900
+            },
+            {
+                name: 'ERROR_PAGE-404',
+                html_url: 'https://github.com/Vishnu8767/ERROR_PAGE-404',
+                description: 'Custom 404 error page design',
+                language: 'HTML',
+                stargazers_count: 2,
+                forks_count: 1,
+                watchers_count: 1,
+                updated_at: '2024-01-14T11:25:00Z',
+                created_at: '2024-01-06T13:15:00Z',
+                fork: false,
+                size: 650
+            },
+            {
+                name: 'NEW-VISHNU',
+                html_url: 'https://github.com/Vishnu8767/NEW-VISHNU',
+                description: 'Personal project showcase',
+                language: 'JavaScript',
+                stargazers_count: 0,
+                forks_count: 0,
+                watchers_count: 0,
+                updated_at: '2024-01-16T09:40:00Z',
+                created_at: '2024-01-08T16:20:00Z',
+                fork: false,
+                size: 1300
+            },
+            {
+                name: 'ASSESSMENT-2',
+                html_url: 'https://github.com/Vishnu8767/ASSESSMENT-2',
+                description: 'Academic assessment project',
+                language: 'Python',
+                stargazers_count: 0,
+                forks_count: 0,
+                watchers_count: 1,
+                updated_at: '2024-01-18T13:55:00Z',
+                created_at: '2024-01-11T10:45:00Z',
+                fork: false,
+                size: 800
+            },
+            {
+                name: 'HOSPITAL-MANAGEMENT',
+                html_url: 'https://github.com/Vishnu8767/HOSPITAL-MANAGEMENT',
+                description: 'Comprehensive hospital management system',
+                language: 'Python',
+                stargazers_count: 4,
+                forks_count: 2,
+                watchers_count: 3,
+                updated_at: '2024-01-20T12:10:00Z',
+                created_at: '2024-01-07T10:00:00Z',
+                fork: false,
+                size: 3200
+            },
+            {
+                name: 'REGISTRATION-FORM',
+                html_url: 'https://github.com/Vishnu8767/REGISTRATION-FORM',
+                description: 'User registration form with validation',
+                language: 'HTML',
+                stargazers_count: 1,
+                forks_count: 1,
+                watchers_count: 0,
+                updated_at: '2024-01-17T15:35:00Z',
+                created_at: '2024-01-09T11:20:00Z',
+                fork: false,
+                size: 700
+            },
+            {
+                name: 'TEMPERATURE_CONVERTER',
+                html_url: 'https://github.com/Vishnu8767/TEMPERATURE_CONVERTER',
+                description: 'Convert temperatures between different units',
+                language: 'Python',
+                stargazers_count: 1,
+                forks_count: 0,
+                watchers_count: 1,
+                updated_at: '2024-01-19T10:15:00Z',
+                created_at: '2024-01-12T14:45:00Z',
+                fork: false,
+                size: 550
+            },
+            {
+                name: 'MINI_CHATBOT',
+                html_url: 'https://github.com/Vishnu8767/MINI_CHATBOT',
+                description: 'Lightweight chatbot implementation',
+                language: 'Python',
+                stargazers_count: 2,
+                forks_count: 0,
+                watchers_count: 1,
+                updated_at: '2024-01-21T16:20:00Z',
+                created_at: '2024-01-13T12:30:00Z',
+                fork: false,
+                size: 1100
+            },
+            {
+                name: 'fruitshop-bill',
+                html_url: 'https://github.com/Vishnu8767/fruitshop-bill',
+                description: 'Fruit shop billing system',
+                language: 'Python',
+                stargazers_count: 0,
+                forks_count: 0,
+                watchers_count: 0,
+                updated_at: '2024-01-16T13:10:00Z',
+                created_at: '2024-01-08T15:25:00Z',
+                fork: false,
+                size: 850
+            },
+            {
+                name: 'calculator-sky',
+                html_url: 'https://github.com/Vishnu8767/calculator-sky',
+                description: 'Sky-themed calculator application',
+                language: 'JavaScript',
+                stargazers_count: 1,
+                forks_count: 0,
+                watchers_count: 1,
+                updated_at: '2024-01-18T11:45:00Z',
+                created_at: '2024-01-10T16:15:00Z',
+                fork: false,
+                size: 900
+            },
+            {
+                name: 'Evaluation-7-July-guru',
+                html_url: 'https://github.com/Vishnu8767/Evaluation-7-July-guru',
+                description: 'July evaluation project - Guru version',
+                language: 'Python',
+                stargazers_count: 0,
+                forks_count: 0,
+                watchers_count: 0,
+                updated_at: '2024-07-07T14:30:00Z',
+                created_at: '2024-07-05T10:20:00Z',
+                fork: false,
+                size: 1200
+            },
+            {
+                name: 'Evaluation-7-July',
+                html_url: 'https://github.com/Vishnu8767/Evaluation-7-July',
+                description: 'July evaluation project',
+                language: 'Python',
+                stargazers_count: 0,
+                forks_count: 0,
+                watchers_count: 1,
+                updated_at: '2024-07-07T12:15:00Z',
+                created_at: '2024-07-03T09:45:00Z',
+                fork: false,
+                size: 1150
+            }
+        ];
+
+        // Language to emoji mapping
+        const languageEmojis = {
+            'JavaScript': '🟨',
+            'Python': '🐍',
+            'HTML': '🟧',
+            'CSS': '🎨',
+            'Java': '☕',
+            'C++': '⚡',
+            'C': '🔧',
+            'TypeScript': '🔷',
+            'React': '⚛️',
+            'Vue': '💚',
+            'Node.js': '🟢',
+            'PHP': '🐘',
+            'Ruby': '💎',
+            'Go': '🐹',
+            'Rust': '🦀',
+            'Swift': '🍎',
+            'Kotlin': '📱',
+            'Shell': '🐚',
+            'PowerShell': '💙',
+            'Dockerfile': '🐳'
+        };
+
+        // Project categories for better organization
+        const getProjectCategory = (name, description, language) => {
+            const nameUpper = name.toUpperCase();
+            const descLower = (description || '').toLowerCase();
+            
+            if (nameUpper.includes('CHATBOT') || nameUpper.includes('SIRI') || nameUpper.includes('BOT')) {
+                return { icon: '🤖', category: 'AI & Bots' };
+            }
+            if (nameUpper.includes('CALCULATOR') || nameUpper.includes('CONVERTER')) {
+                return { icon: '🧮', category: 'Utilities' };
+            }
+            if (nameUpper.includes('HOSPITAL') || nameUpper.includes('MANAGEMENT') || nameUpper.includes('SYSTEM')) {
+                return { icon: '🏥', category: 'Management' };
+            }
+            if (nameUpper.includes('GAME') || nameUpper.includes('QUIZ')) {
+                return { icon: '🎮', category: 'Games' };
+            }
+            if (nameUpper.includes('WEB') || nameUpper.includes('SITE') || language === 'HTML') {
+                return { icon: '🌐', category: 'Web Dev' };
+            }
+            if (nameUpper.includes('API') || nameUpper.includes('SERVER')) {
+                return { icon: '⚙️', category: 'Backend' };
+            }
+            return { icon: '📁', category: 'Projects' };
+        };
+
+        async function fetchGitHubRepos() {
+            const loadingEl = document.getElementById('loading');
+            const errorEl = document.getElementById('error');
+            const projectsGrid = document.getElementById('projects-grid');
+
+            try {
+                // First, try to fetch from GitHub API
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+                
+                const response = await fetch(GITHUB_API_URL, {
+                    signal: controller.signal,
+                    headers: {
+                        'Accept': 'application/vnd.github.v3+json',
+                    }
+                });
+                
+                clearTimeout(timeoutId);
+
+                if (!response.ok) {
+                    throw new Error(`GitHub API responded with status: ${response.status}`);
+                }
+
+                const repos = await response.json();
+                
+                // Hide loading and show success
+                loadingEl.style.display = 'none';
+                projectsGrid.style.display = 'grid';
+                
+                // Update statistics and render
+                updateStatistics(repos);
+                renderRepositories(repos);
+                
+                console.log('✅ Successfully loaded repositories from GitHub API');
+
+            } catch (error) {
+                console.warn('❌ GitHub API failed:', error.message);
+                console.log('🔄 Loading fallback data...');
+                
+                // Use fallback data
+                loadingEl.style.display = 'none';
+                projectsGrid.style.display = 'grid';
+                
+                // Show a notice that we're using cached data
+                const notice = document.createElement('div');
+                notice.style.cssText = `
+                    background: rgba(59, 130, 246, 0.1);
+                    border: 1px solid rgba(59, 130, 246, 0.3);
+                    color: #60a5fa;
+                    padding: 15px;
+                    border-radius: 12px;
+                    text-align: center;
+                    margin-bottom: 30px;
+                    font-size: 0.9rem;
+                `;
+                notice.innerHTML = '📡 Showing cached repositories. Live data will load when GitHub API is available.';
+                projectsGrid.parentNode.insertBefore(notice, projectsGrid);
+                
+                // Update statistics and render with fallback data
+                updateStatistics(FALLBACK_REPOS);
+                renderRepositories(FALLBACK_REPOS);
+                
+                // Try to fetch real data in background after 5 seconds
+                setTimeout(async () => {
+                    try {
+                        const response = await fetch(GITHUB_API_URL);
+                        if (response.ok) {
+                            const repos = await response.json();
+                            notice.remove();
+                            projectsGrid.innerHTML = '';
+                            updateStatistics(repos);
+                            renderRepositories(repos);
+                            console.log('✅ Successfully updated with live GitHub data');
+                        }
+                    } catch (e) {
+                        console.log('🔄 Still using fallback data');
+                    }
+                }, 5000);
+            }
+        }
+
+        function updateStatistics(repos) {
+            const totalRepos = repos.length;
+            const languages = new Set(repos.map(repo => repo.language).filter(lang => lang));
+            const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+
+            // Animate counters
+            animateCounter('total-repos', totalRepos);
+            animateCounter('total-languages', languages.size);
+            animateCounter('total-stars', totalStars);
+        }
+
+        function animateCounter(elementId, target) {
+            const element = document.getElementById(elementId);
+            let current = 0;
+            const increment = Math.max(1, Math.ceil(target / 50));
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = current;
+                }
+            }, 30);
+        }
+
+        function renderRepositories(repos) {
+            const projectsGrid = document.getElementById('projects-grid');
+            
+            repos.forEach((repo, index) => {
+                const { icon, category } = getProjectCategory(repo.name, repo.description, repo.language);
+                
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+                
+                // Format dates
+                const updatedDate = new Date(repo.updated_at).toLocaleDateString();
+                const createdDate = new Date(repo.created_at).toLocaleDateString();
+                
+                projectCard.innerHTML = `
+                    <div class="project-title">
+                        <div class="project-icon">${icon}</div>
+                        <a href="${repo.html_url}" class="project-link" target="_blank" rel="noopener noreferrer">
+                            ${repo.name.replace(/-/g, ' ').replace(/_/g, ' ')}
+                        </a>
+                    </div>
+                    ${repo.description ? `<div class="project-description">${repo.description}</div>` : ''}
+                    <div class="project-stats">
+                        <div class="project-stat">
+                            <span>⭐</span>
+                            <span>${repo.stargazers_count}</span>
+                        </div>
+                        <div class="project-stat">
+                            <span>🍴</span>
+                            <span>${repo.forks_count}</span>
+                        </div>
+                        <div class="project-stat">
+                            <span>👁️</span>
+                            <span>${repo.watchers_count}</span>
+                        </div>
+                        <div class="project-stat">
+                            <span>📅</span>
+                            <span>${updatedDate}</span>
+                        </div>
+                    </div>
+                    <div class="project-tags">
+                        ${repo.language ? `<span class="project-tag">${languageEmojis[repo.language] || '💻'} ${repo.language}</span>` : ''}
+                        <span class="project-tag">${category}</span>
+                        ${repo.size > 1000 ? '<span class="project-tag">Large Project</span>' : ''}
+                        ${repo.stargazers_count > 0 ? '<span class="project-tag">⭐ Starred</span>' : ''}
+                        ${repo.fork ? '<span class="project-tag">🍴 Fork</span>' : '<span class="project-tag">✨ Original</span>'}
+                    </div>
+                `;
+                
+                projectsGrid.appendChild(projectCard);
+                
+                // Add staggered animation
+                setTimeout(() => {
+                    projectCard.classList.add('fade-in');
+                }, index * 100);
+            });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchGitHubRepos();
+        });
+
+        // Add refresh functionality (optional)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F5' || (e.ctrlKey && e.key === 'r')) {
+                location.reload();
+            }
+        });
+    </script>
+</body>
+</html>

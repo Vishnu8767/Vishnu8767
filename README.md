@@ -5,7 +5,7 @@
 
 ---
 ## 🌐 Portfolio Website
-🔗 [View my portfolio here](https://vishnu8767.github.io)
+🔗 [View my portfolio here](https://vishnu8767)
 ---
 
 ## 🚀 Featured Projects
